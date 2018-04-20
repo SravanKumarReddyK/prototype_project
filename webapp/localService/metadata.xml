@@ -1,0 +1,265 @@
+<edmx:Edmx
+    xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+    xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+    xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+    <edmx:Reference
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Uri="./IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Uri="./IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema
+            xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="Z_FIORI_OWNERSUS_CDS" xml:lang="en" sap:schema-version="1">
+            <EntityType Name="OIU_CM_PPARSN_TXType" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="SPRAS"/>
+                    <PropertyRef Name="PPA_RSN_CD"/>
+                </Key>
+                <Property Name="SPRAS" Type="Edm.String" Nullable="false" MaxLength="2" sap:label="Language Key"/>
+                <Property Name="PPA_RSN_CD" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="UpperCase" sap:label="PPA Reason"/>
+                <Property Name="PPA_RSN_DE" Type="Edm.String" MaxLength="50" sap:label="PPA Reason Name"/>
+            </EntityType>
+            <EntityType Name="OIU_CM_SUSP_TXType" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="SPRAS"/>
+                    <PropertyRef Name="SUSP_CD"/>
+                </Key>
+                <Property Name="SPRAS" Type="Edm.String" Nullable="false" MaxLength="2" sap:label="Language Key"/>
+                <Property Name="SUSP_CD" Type="Edm.String" Nullable="false" MaxLength="3" sap:display-format="UpperCase" sap:label="Suspense Reason"/>
+                <Property Name="SUSP_DESC" Type="Edm.String" MaxLength="40" sap:label="Suspense Reason Desc"/>
+            </EntityType>
+            <EntityType Name="OIU_DO_DIType" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="BUKRS"/>
+                    <PropertyRef Name="VNAME"/>
+                    <PropertyRef Name="DOI_NO"/>
+                </Key>
+                <Property Name="BUKRS" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Company Code"/>
+                <Property Name="VNAME" Type="Edm.String" Nullable="false" MaxLength="6" sap:display-format="UpperCase" sap:label="Joint Venture"/>
+                <Property Name="DOI_NO" Type="Edm.String" Nullable="false" MaxLength="5" sap:display-format="UpperCase" sap:label="Division of Interest"/>
+                <Property Name="DOI_NM" Type="Edm.String" MaxLength="30" sap:label="DOI Name"/>
+                <Property Name="SHTXT" Type="Edm.String" MaxLength="35" sap:display-format="UpperCase" sap:label="Description"/>
+                <Property Name="COMB_PD_CD" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Combined prod.cd"/>
+                <Property Name="LAND1" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Country Key"/>
+                <Property Name="PRI_GEO_LOC" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Prim Geo Location"/>
+                <Property Name="SEC_GEO_LOC" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Sec Geo Location"/>
+                <Property Name="DI_LEG_DE_CMT_FL" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Legal Description"/>
+                <Property Name="PERM_TMPRY_CD" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="DOI Status"/>
+                <Property Name="START_DATE" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Start Date"/>
+                <Property Name="EXPIRATION_DATE" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="End Date"/>
+                <Property Name="DOI_APPR_CD" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="DOI Approval Code"/>
+                <Property Name="CHECKED_OUT_FL" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Checked out flag"/>
+                <Property Name="PPN_PROCESS_DT" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="PPN process date"/>
+                <Property Name="PPN_PROCESS_FL" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="PPN Process Flag"/>
+                <Property Name="OWN_TRANSFER_FL" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Transfer Flag"/>
+                <Property Name="OWN_CHANGE_FL" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Change Flag"/>
+                <Property Name="CHECK_OUT_DATE" Type="Edm.DateTimeOffset" Precision="0" sap:label="Check Out Date"/>
+                <Property Name="CHECK_IN_DATE" Type="Edm.DateTimeOffset" Precision="0" sap:label="Check In Date"/>
+                <Property Name="OIU_CRUSER" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Created By"/>
+                <Property Name="OIU_TIMESTAMP" Type="Edm.DateTimeOffset" Precision="0" sap:label="Short Time Stamp"/>
+                <Property Name="IGNORE_OKPPI" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Indicator"/>
+            </EntityType>
+            <EntityType Name="OIU_PR_WCType" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="WL_NO"/>
+                    <PropertyRef Name="WC_NO"/>
+                </Key>
+                <Property Name="WL_NO" Type="Edm.String" Nullable="false" MaxLength="15" sap:display-format="UpperCase" sap:label="Well"/>
+                <Property Name="WC_NO" Type="Edm.String" Nullable="false" MaxLength="5" sap:display-format="UpperCase" sap:label="Well Completion"/>
+                <Property Name="API_WC_NO" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="API Well Cmpltn Nmbr"/>
+                <Property Name="NAME" Type="Edm.String" MaxLength="35" sap:label="Well Completion Name"/>
+                <Property Name="SHTXT" Type="Edm.String" MaxLength="35" sap:display-format="UpperCase" sap:label="Description"/>
+                <Property Name="UOM_GRP" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="UoM group"/>
+                <Property Name="DEV_PGM_NO" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Development Program"/>
+                <Property Name="LAT_NO" Type="Edm.Decimal" Precision="8" Scale="6" sap:label="Latitude"/>
+                <Property Name="LAT_DIR_CD" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Latitude Direction"/>
+                <Property Name="LNG_NO" Type="Edm.Decimal" Precision="9" Scale="6" sap:label="Longitude"/>
+                <Property Name="LNG_DIR_CD" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Longitude Direction"/>
+                <Property Name="ELEV_DPH_U" Type="Edm.String" MaxLength="3" sap:label="Elevation/Depth Unit" sap:semantics="unit-of-measure"/>
+                <Property Name="PLG_BCK_DPTH" Type="Edm.Decimal" Precision="17" Scale="3" sap:unit="ELEV_DPH_U" sap:label="Plug hole depth"/>
+                <Property Name="DATUM_DPTH" Type="Edm.Decimal" Precision="17" Scale="3" sap:unit="ELEV_DPH_U" sap:label="Datum depth"/>
+                <Property Name="KB_ELEV" Type="Edm.Decimal" Precision="17" Scale="3" sap:unit="ELEV_DPH_U" sap:label="KB elevation"/>
+                <Property Name="BASE_BHP_U" Type="Edm.String" MaxLength="3" sap:label="Base bott. hole pres" sap:semantics="unit-of-measure"/>
+                <Property Name="BASE_BHP" Type="Edm.Decimal" Precision="17" Scale="3" sap:unit="BASE_BHP_U" sap:label="Bas BH press."/>
+                <Property Name="CNTRY_CD" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Country"/>
+                <Property Name="PRI_GEO_LOC" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Prim Geo Location"/>
+                <Property Name="SEC_GEO_LOC" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Sec Geo Location"/>
+                <Property Name="RESRV" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Reservoir"/>
+                <Property Name="RESZN" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Reservoir Zone"/>
+                <Property Name="FIELD" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Field"/>
+                <Property Name="PF_NO" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Platform"/>
+                <Property Name="PUR_CD" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Well Purpose"/>
+                <Property Name="LSE_LE_WL_FL" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Lease line well"/>
+                <Property Name="BEG_PRF_DPH" Type="Edm.Decimal" Precision="17" Scale="3" sap:unit="ELEV_DPH_U" sap:label="Perforated From"/>
+                <Property Name="END_PRF_DPH" Type="Edm.Decimal" Precision="17" Scale="3" sap:unit="ELEV_DPH_U" sap:label="Perforated To"/>
+                <Property Name="ALT_WC_KEY" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="Alternate WC Key"/>
+                <Property Name="LCL_WL_NO" Type="Edm.String" MaxLength="15" sap:display-format="UpperCase" sap:label="Local Well"/>
+                <Property Name="WC_SET" Type="Edm.String" MaxLength="15" sap:display-format="UpperCase" sap:label="WC Hierarchy Node"/>
+                <Property Name="DOCNR" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Well.compl.doc.no."/>
+                <Property Name="DOCYR" Type="Edm.String" MaxLength="4" sap:display-format="NonNegative" sap:label="VL Doc Year"/>
+                <Property Name="OR1_OR_LVL_1_NO" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Org Level 1"/>
+                <Property Name="OR2_OR_LVL_2_NO" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Org Level 2"/>
+                <Property Name="OR3_OR_LVL_3_NO" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Org Level 3"/>
+                <Property Name="OR4_OR_LVL_4_NO" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Org Level 4"/>
+                <Property Name="OIU_CRUSER" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Created By"/>
+                <Property Name="OIU_TIMESTAMP" Type="Edm.DateTimeOffset" Precision="0" sap:label="Short Time Stamp"/>
+                <Property Name="PCK_DPTH" Type="Edm.Decimal" Precision="17" Scale="3" sap:unit="ELEV_DPH_U" sap:label="Packer Depth"/>
+                <Property Name="API_SIDT" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="APISidt"/>
+                <Property Name="CBM_INDICATOR" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Coal Bed Methn Reptg"/>
+            </EntityType>
+            <EntityType Name="T8JVTType" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="SPRAS"/>
+                    <PropertyRef Name="BUKRS"/>
+                    <PropertyRef Name="VNAME"/>
+                </Key>
+                <Property Name="SPRAS" Type="Edm.String" Nullable="false" MaxLength="2" sap:label="Language Key"/>
+                <Property Name="BUKRS" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Company Code"/>
+                <Property Name="VNAME" Type="Edm.String" Nullable="false" MaxLength="6" sap:display-format="UpperCase" sap:label="Joint Venture"/>
+                <Property Name="VTEXT" Type="Edm.String" MaxLength="35" sap:display-format="UpperCase" sap:label="Description"/>
+            </EntityType>
+            <EntityType Name="z_fiori_masterType" sap:label="Owner Information" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="own_no"/>
+                </Key>
+                <Property Name="own_no" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Supplier" sap:quickinfo="Account Number of Supplier"/>
+                <Property Name="affiliate" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Affiliate Flag"/>
+                <Property Name="enty_cd" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Entity Type" sap:quickinfo="Entity Code"/>
+                <Property Name="enty_cd_nm" Type="Edm.String" MaxLength="60" sap:label="Enty Typ Descr." sap:quickinfo="Entity Type Description"/>
+                <Property Name="payment_type" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Payment Type"/>
+                <Property Name="payment_type_nm" Type="Edm.String" MaxLength="60" sap:label="Payment Type Desc" sap:quickinfo="Payment Type Description"/>
+                <Property Name="kglnd" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Resident Country"/>
+                <Property Name="kgreg" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Region of Residence"/>
+                <Property Name="land1" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Country" sap:quickinfo="Country Key"/>
+                <Property Name="own_nm" Type="Edm.String" MaxLength="35" sap:label="Name" sap:quickinfo="Name 1"/>
+                <Property Name="name2" Type="Edm.String" MaxLength="35" sap:label="Name 2"/>
+                <Property Name="ort01" Type="Edm.String" MaxLength="35" sap:label="City"/>
+                <Property Name="pstlz" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Postal Code"/>
+                <Property Name="regio" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Region" sap:quickinfo="Region (State, Province, County)"/>
+                <Property Name="stras" Type="Edm.String" MaxLength="35" sap:label="Street" sap:quickinfo="House number and street"/>
+                <Property Name="adrnr" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Address"/>
+                <Property Name="anred" Type="Edm.String" MaxLength="15" sap:label="Title"/>
+                <Property Name="ktokk" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Account group" sap:quickinfo="Vendor account group"/>
+                <Property Name="kunnr" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Customer" sap:quickinfo="Customer Number"/>
+                <Property Name="telf1" Type="Edm.String" MaxLength="16" sap:label="Telephone 1" sap:quickinfo="First telephone number"/>
+                <Property Name="telf2" Type="Edm.String" MaxLength="16" sap:label="Telephone 2" sap:quickinfo="Second telephone number"/>
+                <Property Name="telfx" Type="Edm.String" MaxLength="31" sap:label="Fax Number"/>
+            </EntityType>
+            <EntityType Name="Z_FIORI_OWNERSUSType" sap:label="Owner Information" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="own_no"/>
+                    <PropertyRef Name="vname"/>
+                    <PropertyRef Name="doi_no"/>
+                    <PropertyRef Name="wl_no"/>
+                    <PropertyRef Name="wc_no"/>
+                    <PropertyRef Name="own_int_type_seq"/>
+                    <PropertyRef Name="sale_dt"/>
+                    <PropertyRef Name="pd_cd"/>
+                    <PropertyRef Name="disb_decimal"/>
+                    <PropertyRef Name="saknr"/>
+                    <PropertyRef Name="record_type"/>
+                    <PropertyRef Name="waers"/>
+                </Key>
+                <Property Name="own_no" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Owner" sap:quickinfo="PRA owner"/>
+                <Property Name="vname" Type="Edm.String" Nullable="false" MaxLength="6" sap:display-format="UpperCase" sap:label="Joint Venture"/>
+                <Property Name="doi_no" Type="Edm.String" Nullable="false" MaxLength="5" sap:display-format="UpperCase" sap:label="Division of Interest" sap:quickinfo="Division of interest (DOI)"/>
+                <Property Name="wl_no" Type="Edm.String" Nullable="false" MaxLength="15" sap:display-format="UpperCase" sap:label="Well" sap:quickinfo="Well ID number"/>
+                <Property Name="wc_no" Type="Edm.String" Nullable="false" MaxLength="5" sap:display-format="UpperCase" sap:label="Well Completion" sap:quickinfo="Well Completion Number"/>
+                <Property Name="own_int_type_seq" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Owner Int Type/Seq" sap:quickinfo="Owner Interest Type / Sequence"/>
+                <Property Name="sale_dt" Type="Edm.DateTime" Nullable="false" Precision="0" sap:display-format="Date" sap:label="Sales Date" sap:quickinfo="Sales Date / Month"/>
+                <Property Name="pd_cd" Type="Edm.String" Nullable="false" MaxLength="3" sap:display-format="UpperCase" sap:label="Full Product Code" sap:quickinfo="Full three char. product code (Major and Detail Products)"/>
+                <Property Name="disb_decimal" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Disbursement Decimal" sap:quickinfo="Payment Processing - Disbursement decimal"/>
+                <Property Name="saknr" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="G/L Account" sap:quickinfo="G/L Account Number"/>
+                <Property Name="record_type" Type="Edm.String" Nullable="false" MaxLength="1" sap:display-format="UpperCase" sap:label="Record Type" sap:quickinfo="Payment Processing - Record Type"/>
+                <Property Name="waers" Type="Edm.String" Nullable="false" MaxLength="5" sap:label="Currency" sap:quickinfo="Currency Key" sap:semantics="currency-code"/>
+                <Property Name="bukrs" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Company Code"/>
+                <Property Name="acct_period" Type="Edm.String" MaxLength="7" sap:label="Accounting Period"/>
+                <Property Name="nri_decimal" Type="Edm.Decimal" Precision="9" Scale="8" sap:label="Net Revenue Interest" sap:quickinfo="Net Revenue Interest Percent"/>
+                <Property Name="unit_vname" Type="Edm.String" MaxLength="6" sap:display-format="UpperCase" sap:label="Unit Venture" sap:quickinfo="Unit venture"/>
+                <Property Name="vol_uom" Type="Edm.String" MaxLength="3" sap:label="Base Unit of Measure" sap:semantics="unit-of-measure"/>
+                <Property Name="energy_uom" Type="Edm.String" MaxLength="3" sap:label="Base Unit of Measure" sap:semantics="unit-of-measure"/>
+                <Property Name="sus_rsn_cd" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Suspense Reason" sap:quickinfo="Suspense Reason Code"/>
+                <Property Name="ppa_rsn_cd" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="PPA Reason" sap:quickinfo="Prior Period Adjustment Reason Code"/>
+                <Property Name="gross_vol" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="vol_uom" sap:label="Gross Volume" sap:quickinfo="Total Gross Volume"/>
+                <Property Name="gross_val" Type="Edm.Decimal" Precision="14" Scale="3" sap:unit="waers" sap:label="Gross Amount" sap:quickinfo="Gross value"/>
+                <Property Name="owner_gross_val" Type="Edm.Decimal" Precision="14" Scale="3" sap:unit="waers" sap:label="Owner Gross Amount" sap:quickinfo="Owner Gross Value"/>
+                <Property Name="net_val" Type="Edm.Decimal" Precision="14" Scale="3" sap:unit="waers" sap:label="Owner Net Amount" sap:quickinfo="Owner Net Value"/>
+                <Property Name="net_vol" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="vol_uom" sap:label="Owner Net Volume"/>
+                <Property Name="gross_energy" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="energy_uom" sap:label="Gross Energy"/>
+                <Property Name="owner_energy" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="energy_uom" sap:label="Owner Energy"/>
+                <Property Name="future_pay_fl" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Future Pay" sap:quickinfo="Payment Processing - Future Pay Flag"/>
+                <Property Name="jib_flag" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Is JIB Offset" sap:quickinfo="Job Interest Billing Indicator"/>
+                <NavigationProperty Name="to_cm_pp" Relationship="Z_FIORI_OWNERSUS_CDS.assoc_FF4263EE5898CB30DB10F7C410782179" FromRole="FromRole_assoc_FF4263EE5898CB30DB10F7C410782179" ToRole="ToRole_assoc_FF4263EE5898CB30DB10F7C410782179"/>
+                <NavigationProperty Name="to_cm_susp" Relationship="Z_FIORI_OWNERSUS_CDS.assoc_E3C456EFA27FCCCABA37D845A5E34C8C" FromRole="FromRole_assoc_E3C456EFA27FCCCABA37D845A5E34C8C" ToRole="ToRole_assoc_E3C456EFA27FCCCABA37D845A5E34C8C"/>
+                <NavigationProperty Name="to_di" Relationship="Z_FIORI_OWNERSUS_CDS.assoc_EEC8704BD168AFCA64B5436A5CD22D21" FromRole="FromRole_assoc_EEC8704BD168AFCA64B5436A5CD22D21" ToRole="ToRole_assoc_EEC8704BD168AFCA64B5436A5CD22D21"/>
+                <NavigationProperty Name="to_jvd" Relationship="Z_FIORI_OWNERSUS_CDS.assoc_4138A895A8BE28F633BCBA1610F2890A" FromRole="FromRole_assoc_4138A895A8BE28F633BCBA1610F2890A" ToRole="ToRole_assoc_4138A895A8BE28F633BCBA1610F2890A"/>
+                <NavigationProperty Name="to_owner" Relationship="Z_FIORI_OWNERSUS_CDS.assoc_5088E8B431CEAF26B631C1A2E0B07AB6" FromRole="FromRole_assoc_5088E8B431CEAF26B631C1A2E0B07AB6" ToRole="ToRole_assoc_5088E8B431CEAF26B631C1A2E0B07AB6"/>
+                <NavigationProperty Name="to_wc" Relationship="Z_FIORI_OWNERSUS_CDS.assoc_E87D836EA92FFAB377FBD8A673BC59EC" FromRole="FromRole_assoc_E87D836EA92FFAB377FBD8A673BC59EC" ToRole="ToRole_assoc_E87D836EA92FFAB377FBD8A673BC59EC"/>
+            </EntityType>
+            <Association Name="assoc_E3C456EFA27FCCCABA37D845A5E34C8C" sap:content-version="1">
+                <End Type="Z_FIORI_OWNERSUS_CDS.Z_FIORI_OWNERSUSType" Multiplicity="1" Role="FromRole_assoc_E3C456EFA27FCCCABA37D845A5E34C8C"/>
+                <End Type="Z_FIORI_OWNERSUS_CDS.OIU_CM_SUSP_TXType" Multiplicity="0..1" Role="ToRole_assoc_E3C456EFA27FCCCABA37D845A5E34C8C"/>
+            </Association>
+            <Association Name="assoc_EEC8704BD168AFCA64B5436A5CD22D21" sap:content-version="1">
+                <End Type="Z_FIORI_OWNERSUS_CDS.Z_FIORI_OWNERSUSType" Multiplicity="1" Role="FromRole_assoc_EEC8704BD168AFCA64B5436A5CD22D21"/>
+                <End Type="Z_FIORI_OWNERSUS_CDS.OIU_DO_DIType" Multiplicity="0..1" Role="ToRole_assoc_EEC8704BD168AFCA64B5436A5CD22D21"/>
+            </Association>
+            <Association Name="assoc_4138A895A8BE28F633BCBA1610F2890A" sap:content-version="1">
+                <End Type="Z_FIORI_OWNERSUS_CDS.Z_FIORI_OWNERSUSType" Multiplicity="1" Role="FromRole_assoc_4138A895A8BE28F633BCBA1610F2890A"/>
+                <End Type="Z_FIORI_OWNERSUS_CDS.T8JVTType" Multiplicity="0..1" Role="ToRole_assoc_4138A895A8BE28F633BCBA1610F2890A"/>
+            </Association>
+            <Association Name="assoc_5088E8B431CEAF26B631C1A2E0B07AB6" sap:content-version="1">
+                <End Type="Z_FIORI_OWNERSUS_CDS.Z_FIORI_OWNERSUSType" Multiplicity="1" Role="FromRole_assoc_5088E8B431CEAF26B631C1A2E0B07AB6"/>
+                <End Type="Z_FIORI_OWNERSUS_CDS.z_fiori_masterType" Multiplicity="*" Role="ToRole_assoc_5088E8B431CEAF26B631C1A2E0B07AB6"/>
+            </Association>
+            <Association Name="assoc_E87D836EA92FFAB377FBD8A673BC59EC" sap:content-version="1">
+                <End Type="Z_FIORI_OWNERSUS_CDS.Z_FIORI_OWNERSUSType" Multiplicity="1" Role="FromRole_assoc_E87D836EA92FFAB377FBD8A673BC59EC"/>
+                <End Type="Z_FIORI_OWNERSUS_CDS.OIU_PR_WCType" Multiplicity="0..1" Role="ToRole_assoc_E87D836EA92FFAB377FBD8A673BC59EC"/>
+            </Association>
+            <Association Name="assoc_FF4263EE5898CB30DB10F7C410782179" sap:content-version="1">
+                <End Type="Z_FIORI_OWNERSUS_CDS.Z_FIORI_OWNERSUSType" Multiplicity="1" Role="FromRole_assoc_FF4263EE5898CB30DB10F7C410782179"/>
+                <End Type="Z_FIORI_OWNERSUS_CDS.OIU_CM_PPARSN_TXType" Multiplicity="0..1" Role="ToRole_assoc_FF4263EE5898CB30DB10F7C410782179"/>
+            </Association>
+            <EntityContainer Name="Z_FIORI_OWNERSUS_CDS_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="OIU_CM_PPARSN_TX" EntityType="Z_FIORI_OWNERSUS_CDS.OIU_CM_PPARSN_TXType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="OIU_CM_SUSP_TX" EntityType="Z_FIORI_OWNERSUS_CDS.OIU_CM_SUSP_TXType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="OIU_DO_DI" EntityType="Z_FIORI_OWNERSUS_CDS.OIU_DO_DIType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="OIU_PR_WC" EntityType="Z_FIORI_OWNERSUS_CDS.OIU_PR_WCType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="T8JVT" EntityType="Z_FIORI_OWNERSUS_CDS.T8JVTType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="z_fiori_master" EntityType="Z_FIORI_OWNERSUS_CDS.z_fiori_masterType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="Z_FIORI_OWNERSUS" EntityType="Z_FIORI_OWNERSUS_CDS.Z_FIORI_OWNERSUSType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <AssociationSet Name="assoc_E3C456EFA27FCCCABA37D845A5E34C8C" Association="Z_FIORI_OWNERSUS_CDS.assoc_E3C456EFA27FCCCABA37D845A5E34C8C" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="Z_FIORI_OWNERSUS" Role="FromRole_assoc_E3C456EFA27FCCCABA37D845A5E34C8C"/>
+                    <End EntitySet="OIU_CM_SUSP_TX" Role="ToRole_assoc_E3C456EFA27FCCCABA37D845A5E34C8C"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_5088E8B431CEAF26B631C1A2E0B07AB6" Association="Z_FIORI_OWNERSUS_CDS.assoc_5088E8B431CEAF26B631C1A2E0B07AB6" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="Z_FIORI_OWNERSUS" Role="FromRole_assoc_5088E8B431CEAF26B631C1A2E0B07AB6"/>
+                    <End EntitySet="z_fiori_master" Role="ToRole_assoc_5088E8B431CEAF26B631C1A2E0B07AB6"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_EEC8704BD168AFCA64B5436A5CD22D21" Association="Z_FIORI_OWNERSUS_CDS.assoc_EEC8704BD168AFCA64B5436A5CD22D21" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="Z_FIORI_OWNERSUS" Role="FromRole_assoc_EEC8704BD168AFCA64B5436A5CD22D21"/>
+                    <End EntitySet="OIU_DO_DI" Role="ToRole_assoc_EEC8704BD168AFCA64B5436A5CD22D21"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_E87D836EA92FFAB377FBD8A673BC59EC" Association="Z_FIORI_OWNERSUS_CDS.assoc_E87D836EA92FFAB377FBD8A673BC59EC" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="Z_FIORI_OWNERSUS" Role="FromRole_assoc_E87D836EA92FFAB377FBD8A673BC59EC"/>
+                    <End EntitySet="OIU_PR_WC" Role="ToRole_assoc_E87D836EA92FFAB377FBD8A673BC59EC"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_FF4263EE5898CB30DB10F7C410782179" Association="Z_FIORI_OWNERSUS_CDS.assoc_FF4263EE5898CB30DB10F7C410782179" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="Z_FIORI_OWNERSUS" Role="FromRole_assoc_FF4263EE5898CB30DB10F7C410782179"/>
+                    <End EntitySet="OIU_CM_PPARSN_TX" Role="ToRole_assoc_FF4263EE5898CB30DB10F7C410782179"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_4138A895A8BE28F633BCBA1610F2890A" Association="Z_FIORI_OWNERSUS_CDS.assoc_4138A895A8BE28F633BCBA1610F2890A" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="Z_FIORI_OWNERSUS" Role="FromRole_assoc_4138A895A8BE28F633BCBA1610F2890A"/>
+                    <End EntitySet="T8JVT" Role="ToRole_assoc_4138A895A8BE28F633BCBA1610F2890A"/>
+                </AssociationSet>
+            </EntityContainer>
+            <atom:link
+                xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="./sap/Z_FIORI_OWNERSUS_CDS/$metadata"/>
+                <atom:link
+                    xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="./sap/Z_FIORI_OWNERSUS_CDS/$metadata"/>
+                </Schema>
+            </edmx:DataServices>
+        </edmx:Edmx>
